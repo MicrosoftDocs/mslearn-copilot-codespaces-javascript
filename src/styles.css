@@ -4,6 +4,17 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@200;400;600;800&display=swap");
 
+img.socialIcon {
+  height: 30px;
+  width: 30px;
+  transition: transform 0.3s ease-in-out;
+}
+
+img.socialIcon:hover {
+  transform: scale(1.2);
+}
+
+
 html,
 body {
   font-family: "Montserrat", sans-serif;
