@@ -1,5 +1,5 @@
 /**
- * Application component
+ * Application component 
  *
  * To contain application wide settings, routes, state, etc.
  */
