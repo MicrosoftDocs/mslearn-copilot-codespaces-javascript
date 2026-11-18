@@ -13,6 +13,7 @@ Explore how you can modify a JavaScript repository using code suggestions from G
 
 In this template portfolio, we have a React based web application ready for you to easily customize and deploy using only your web browser.
 
+Use the **Dark mode** button in the navigation to switch between light and dark themes. The site starts in light mode and remembers your choice in the same browser.
 
 ### 🛠 Step 1: Customize the web app
 

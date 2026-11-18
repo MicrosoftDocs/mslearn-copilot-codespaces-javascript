@@ -15,12 +15,65 @@ body {
 }
 
 div#main {
+  --page-color: #fff;
+  --text-color: #000;
+  --surface-color: #fff;
+  --nav-color: rgba(255, 255, 255, 0.9);
+  --accent-color: #4e567e;
+  --border-color: #ccc;
+  --footer-color: #4e567e;
+
+  color-scheme: light;
+  background-color: var(--page-color);
+  color: var(--text-color);
   display: flex;
   flex-direction: column;
   width: 100vw;
 }
 
+#main[data-theme="dark"] {
+  --page-color: #151721;
+  --text-color: #f5f5fa;
+  --surface-color: #222636;
+  --nav-color: rgba(21, 23, 33, 0.94);
+  --accent-color: #c1ccff;
+  --border-color: #70768d;
+  --footer-color: #252a46;
+
+  color-scheme: dark;
+}
+
+.site-nav {
+  align-items: center;
+  background: var(--nav-color);
+  display: flex;
+  font-size: clamp(0.75rem, 3.2vw, 1rem);
+  flex-wrap: wrap;
+  gap: clamp(0.5rem, 3vw, 2rem);
+  inset: 0 0 auto;
+  justify-content: center;
+  padding: 0.75rem 0.5rem;
+  position: fixed;
+  z-index: 10;
+}
+
+.theme-toggle {
+  background-color: var(--surface-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 0.5rem;
+  color: var(--text-color);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.375rem 0.5rem;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
 section {
+  isolation: isolate;
   position: relative;
   width: 100vw;
 }
@@ -43,6 +96,10 @@ section img.background {
   transform: translate(-50%, 0);
   width: 100vmax;
   z-index: -1;
+}
+
+#main[data-theme="dark"] #home .background {
+  filter: brightness(0.35);
 }
 
 h1 {
@@ -90,16 +147,16 @@ li {
 }
 
 li::marker {
-  color: #4e567e;
+  color: var(--accent-color);
 }
 
 a {
-  color: black;
+  color: var(--text-color);
   text-decoration: none;
 }
 
 a:hover {
-  color: #4e567e;
+  color: var(--accent-color);
 }
 
 .container {
@@ -110,8 +167,9 @@ a:hover {
 }
 
 .container .box {
+  background-color: var(--surface-color);
   border-radius: 10px;
-  border: 1px solid rgb(204, 204, 204);
+  border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

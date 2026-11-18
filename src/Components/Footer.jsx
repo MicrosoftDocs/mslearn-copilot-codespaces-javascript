@@ -35,7 +35,6 @@ const Footer = (props) => {
     linkedIn,
     medium,
     name,
-    primaryColor,
     twitter,
     youTube,
   } = props;
@@ -49,7 +48,7 @@ const Footer = (props) => {
         alignItems: "center",
         gap: "2.5rem",
         padding: "5rem 0 3rem",
-        backgroundColor: primaryColor,
+        backgroundColor: "var(--footer-color)",
         width: "100vw"
       }}
     >
@@ -132,7 +131,6 @@ Footer.propTypes = {
   linkedIn: PropTypes.string,
   medium: PropTypes.string,
   name: PropTypes.string.isRequired,
-  primaryColor: PropTypes.string,
   twitter: PropTypes.string,
   youTube: PropTypes.string,
 

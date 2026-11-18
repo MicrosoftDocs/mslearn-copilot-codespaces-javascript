@@ -4,7 +4,7 @@
  * To contain application wide settings, routes, state, etc.
  */
 
-import React from "react";
+import React, { useState } from "react";
 
 import About from "./Components/About";
 import Footer from "./Components/Footer";
@@ -35,17 +35,40 @@ const siteProps = {
   youTube: "Code",
 };
 
-const primaryColor = "#4E567E";
-const secondaryColor = "#D2F1E4";
+const themeStorageKey = "portfolio-theme";
+
+const getInitialTheme = () => {
+  try {
+    return window.localStorage.getItem(themeStorageKey) === "dark" ? "dark" : "light";
+  } catch (error) {
+    if (error.name !== "SecurityError") throw error;
+    console.warn("Could not read the theme preference.", error);
+    return "light";
+  }
+};
 
 const App = () => {
+  const [theme, setTheme] = useState(getInitialTheme);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+
+    try {
+      window.localStorage.setItem(themeStorageKey, nextTheme);
+    } catch (error) {
+      if (error.name !== "SecurityError" && error.name !== "QuotaExceededError") throw error;
+      console.warn("Could not save the theme preference.", error);
+    }
+  };
+
   return (
-    <div id="main">
-      <Header />
+    <div id="main" data-theme={theme}>
+      <Header isDarkMode={theme === "dark"} onToggleTheme={toggleTheme} />
       <Home name={siteProps.name} title={siteProps.title} />
       <About />
       <Portfolio />
-      <Footer {...siteProps} primaryColor={primaryColor} secondaryColor={secondaryColor} />
+      <Footer {...siteProps} />
     </div>
   );
 };
