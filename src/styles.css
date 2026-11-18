@@ -98,7 +98,7 @@ section img.background {
   z-index: -1;
 }
 
-#main[data-theme="dark"] #home .background {
+#main[data-theme="dark"] section img.background {
   filter: brightness(0.35);
 }
 
